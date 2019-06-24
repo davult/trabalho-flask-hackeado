@@ -22,6 +22,16 @@ toda a parte de uploads
 
 '''
 
+@app.route('/listar')
+def listar():
+    arquivos = arquivo_dao.listar()
+    return render_template('listar.html', arquivos=arquivos)
+
+@app.route('/binlistar')
+def binlistar():
+    arquivos = arquivo_dao_bin.listar()
+    return render_template('listarbytes.html', arquivos=arquivos, sys=sys)
+
 def main():
     app.env = 'development'
     app.run(port=5000, debug=True)
